@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Cara Membuat Kalkulator Sederhana Menggunakan PHP</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<?php
+    
+    if (isset($_POST['hitung'])) {
+        $txt_1 = $_POST['txt_1'];
+        $txt_2 = $_POST['txt_2'];
+        $operator = $_POST['operator'];
+
+            if ($operator == "tambah")
+                $hasil = $txt_1+$txt_2;
+
+            elseif ($operator == "kurang")
+                $hasil = $txt_1-$txt_2;
+
+            elseif ($operator == "kali")
+                $hasil = $txt_1*$txt_2;
+            
+            elseif ($operator == "bagi")
+                $hasil = $txt_1/$txt_2;
+            
+            else
+                echo "tidak ada hasil";
+    }   
+?>
+
+<div class ="Kalkulator">
+    <h1 class ="Judul"><b>Kalkulator</b></h1>
+        <form action ="Calculator.php">
+            <input type ="text" name ="txt_1" class ="Text" placeholder ="Typing Here ...">
+            <input type ="text" name ="txt_2" class ="Text" placeholder ="Typing Here ...">
+                <select class ="Operator" name ="operator">
+                    <option value="tambah">+</option>
+                    <option value="kurang">-</option>
+                    <option value="kali">x</option>
+                    <option value="bagi">:</option>
+                </select>
+            <input type="submit" name="hitung" value="HITUNG" class="Tombol">
+            <input type="submit" name="reset" value="RESET" class="Tombol">
+        </form>
+
+<?php if(isset($_POST['hitung'])) { ?>
+        <div><h3><b>Hasilnya : </b></h3></div>
+            <input type="text" value="<php echo $hasil; ?>" class="Text"
+<?php } else { ?>                 
+<?php } ?>
+
+?>
+</div>
+</body>    
+</html>
